@@ -8,12 +8,35 @@
 import dotenv from "dotenv" // to save secuti enverment variabls like securt key or db info,...etc
 dotenv.config()// middlewar of help us to accesst  .env file
 const app=express();
+app.use(express.json()) // middlewar  lik bodyparser.json
 
-//  methods  "url","callback fn"
-app.post("url","callback fn") // use to add data
-app.get("url","callback fn")//use to get data
-app.put("url","callback fn")//use to update data
-app.patch("url","callback fn")//use to update part of data
+const users=[
+    {
+    name:"Hesham",
+    Email:"heshamAbdulaziz88@gmail.com"
+},
+   {
+    name:"Ali",
+    Email:"Ali8@gmail.com"
+},
+   {
+    name:"jack",
+    Email:"jack123@gmail.com"
+}
+]
+// add user
+//endpoint:http://localhost:5000/Add
+app.post("/Add",(req,res)=>{
+    const user=req.body
+    users.push(req.body);
+
+res.json(users)
+}) 
+// rout get all users
+app.get("/",(req,res)=>{  
+res.json(users)
+}) // use to add data
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT,()=>{
 
