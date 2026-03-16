@@ -5,14 +5,14 @@
  // to use second way we have to add in json package  "type":"module"
 
  import express from "express";
-
+import dotenv from "dotenv" // to save secuti enverment variabls like securt key or db info,...etc
+dotenv.config()
 const app=express();
 
-// create sever 
+// create sever
+const PORT = process.env.PORT || 5000;
+app.listen(PORT,()=>{
 
-
-app.listen("5000",()=>{
-
-    console.log("server runing in port 5000");
+    console.log(`server runing in port ${process.env.PORT}`);
     
 })
