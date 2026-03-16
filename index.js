@@ -9,10 +9,11 @@ import dotenv from "dotenv" // to save secuti enverment variabls like securt key
 dotenv.config()// middlewar of help us to accesst  .env file
 const app=express();
 
-
-// here were write all crud operations ( GET,POST,PUT ,PATCH)
-
-// create sever
+//  methods  "url","callback fn"
+app.post("url","callback fn") // use to add data
+app.get("url","callback fn")//use to get data
+app.put("url","callback fn")//use to update data
+app.patch("url","callback fn")//use to update part of data
 const PORT = process.env.PORT || 5000;
 app.listen(PORT,()=>{
 
