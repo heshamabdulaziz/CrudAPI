@@ -12,14 +12,17 @@ app.use(express.json()) // middlewar  lik bodyparser.json
 
 const users=[
     {
+    id:1,  
     name:"Hesham",
     Email:"heshamAbdulaziz88@gmail.com"
 },
    {
+    id:2, 
     name:"Ali",
     Email:"Ali8@gmail.com"
 },
    {
+    id:3, 
     name:"jack",
     Email:"jack123@gmail.com"
 }
@@ -27,15 +30,26 @@ const users=[
 // add user
 //endpoint:http://localhost:5000/Add
 app.post("/Add",(req,res)=>{
-    const user=req.body
-    users.push(req.body);
+    const user={id:users.length+1,...req.body}
+
+    users.push({id:users.length+1,...req.body});
 
 res.json(users)
 }) 
-// rout get all users
+
+// endpoint :get all users
+http://localhost:5000/
 app.get("/",(req,res)=>{  
 res.json(users)
-}) // use to add data
+}) 
+// endpoint :return one user
+//http://localhost:5000/id=1,2,3,4
+app.get("/:id",(req,res)=>{ 
+const {id}=req.params; 
+const user=users.find((u)=>{
+    return u.id==id})
+res.json(user)
+}) 
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT,()=>{
