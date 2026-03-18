@@ -47,11 +47,15 @@ res.json(users)
 
 // endpoint :return one user
 //http://localhost:5000/user/id=1,2,3,4
+// get one user
 app.get("/user/:id",(req,res)=>{ 
 const {id}=req.params; 
 const user=users.find((u)=>u.id==id)
 res.json(user)
 }) 
+// endpoint :delete  user
+//http://localhost:5000/user/id=1,2,3,4
+// delete user
 app.delete("/user/:id",(req,res)=>{ 
 const {id}=req.params; 
 const user=users.filter((u)=>u.id!==id)
@@ -59,8 +63,9 @@ res.json(user)
 }) 
 //
 // endpoint : update user 
-//http://localhost:5000/id=1,2,3,4
+//http://localhost:5000/user/id=1,2,3,4
 // patch use whenwe update part of object
+// Patch method
 app.patch("/user/:id",(req,res)=>{ 
     const{name,Email}=req.body;
 const {id}=req.params; 
@@ -68,6 +73,18 @@ const user=users.find((u)=>u.id==id)
 // here uesr can update name or email
 if(name){user.name=name} 
 if(Email){user.Email=Email}
+
+res.json(user)
+}) 
+app.put("/user/:id",(req,res)=>{ 
+    const{name,Email}=req.body;
+const {id}=req.params; 
+const user=users.find((u)=>u.id==id)
+// here update all properties of object ( update name and email)
+// PUT method
+//http://localhost:5000/user/id=1,2,3,4
+// Patch method
+if(name&&Email){user.name=name,user.Email=Email} 
 
 res.json(user)
 }) 
