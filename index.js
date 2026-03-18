@@ -1,5 +1,6 @@
  import express from "express";
  import usersRouter from "./routes/users.js"
+ import postrRouter from "./routes/posts.js"
 import dotenv from "dotenv" 
 dotenv.config()
 const app=express();
@@ -7,6 +8,7 @@ app.use(express.json())
 // when endpoint /user go to users router
 
 app.use("/user",usersRouter) 
+app.use("/post",postrRouter) 
 
 
 
