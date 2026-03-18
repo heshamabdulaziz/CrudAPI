@@ -1,65 +1,19 @@
 
 import express from "express"
- import { v4 as uuidv4 } from "uuid";
 const router=express.Router();
-const users=[
-    {
-    id:1,  
-    name:"Hesham",
-    Email:"heshamAbdulaziz88@gmail.com"
-},
-   {
-    id:2, 
-    name:"Ali",
-    Email:"Ali8@gmail.com"
-},
-   {
-    id:3, 
-    name:"jack",
-    Email:"jack123@gmail.com"
-}
-]
 
-router.get("/",(req,res)=>{  
-res.json(users)
-}) 
 
-router.post("/Add",(req,res)=>{
-    const user={id:users.length+1,...req.body}
+// this users rout 
+ //router.get(routes,(req,res)=>{  }= bussnass logic or controller)
 
-    users.push({id:uuidv4(),...req.body});
+router.get("/",) 
 
-res.json(users)
-}) 
+router.post("/Add",) 
 
-router.get("/:id",(req,res)=>{ 
-const {id}=req.params; 
-const user=users.find((u)=>u.id==id)
-res.json(user)
-}) 
+router.get("/:id",) 
 
-router.delete("/:id",(req,res)=>{ 
-const {id}=req.params; 
-const user=users.filter((u)=>u.id!==id)
-res.json(user)
-}) 
+router.delete("/:id",) 
 
-router.patch("/:id",(req,res)=>{ 
-    const{name,Email}=req.body;
-const {id}=req.params; 
-const user=users.find((u)=>u.id==id)
-// here uesr can update name or email
-if(name){user.name=name} 
-if(Email){user.Email=Email}
-
-res.json(user)
-}) 
-router.put("/:id",(req,res)=>{ 
-    const{name,Email}=req.body;
-const {id}=req.params; 
-const user=users.find((u)=>u.id==id)
-if(name&&Email){user.name=name,user.Email=Email} 
-
-res.json(user)
-}) 
+router.patch("/:id",) 
+router.put("/:id",) 
 export default router;

@@ -19,7 +19,8 @@ const posts=[
     desc:"descraption3"
 }
 ]
-
+// this posts rout 
+ //router.get(routes,(req,res)=>{  }= bussnass logic)
 router.get("/",(req,res)=>{  
 res.json(posts)
 }) 

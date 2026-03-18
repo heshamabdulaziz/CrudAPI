@@ -8,6 +8,7 @@ app.use(express.json())
 // when endpoint /user go to users router
 
 app.use("/user",usersRouter) 
+
 app.use("/post",postrRouter) 
 
 
