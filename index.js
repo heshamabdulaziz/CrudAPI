@@ -5,6 +5,7 @@
  // to use second way we have to add in json package  "type":"module"
 
  import express from "express";
+ import { v4 as uuidv4 } from "uuid";
 import dotenv from "dotenv" // to save secuti enverment variabls like securt key or db info,...etc
 dotenv.config()// middlewar of help us to accesst  .env file
 const app=express();
@@ -28,28 +29,33 @@ const users=[
 }
 ]
 // add user
-//endpoint:http://localhost:5000/Add
-app.post("/Add",(req,res)=>{
+//endpoint:http://localhost:5000/user/Add
+app.post("/user/Add",(req,res)=>{
     const user={id:users.length+1,...req.body}
 
-    users.push({id:users.length+1,...req.body});
+    users.push({id:uuidv4(),...req.body});
 
 res.json(users)
 }) 
 
 // endpoint :get all users
 http://localhost:5000/
-app.get("/",(req,res)=>{  
+app.get("/user",(req,res)=>{  
 res.json(users)
 }) 
 // endpoint :return one user
 //http://localhost:5000/id=1,2,3,4
-app.get("/:id",(req,res)=>{ 
+app.get("/user/:id",(req,res)=>{ 
 const {id}=req.params; 
-const user=users.find((u)=>{
-    return u.id==id})
+const user=users.find((u)=>u.id==id)
 res.json(user)
 }) 
+app.delete("/user/:id",(req,res)=>{ 
+const {id}=req.params; 
+const user=users.filter((u)=>u.id!==id)
+res.json(user)
+}) 
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT,()=>{
