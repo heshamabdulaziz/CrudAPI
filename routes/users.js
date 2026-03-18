@@ -20,11 +20,11 @@ const users=[
 }
 ]
 
-router.get("/user",(req,res)=>{  
+router.get("/",(req,res)=>{  
 res.json(users)
 }) 
 
-router.post("/user/Add",(req,res)=>{
+router.post("/Add",(req,res)=>{
     const user={id:users.length+1,...req.body}
 
     users.push({id:uuidv4(),...req.body});
@@ -32,19 +32,19 @@ router.post("/user/Add",(req,res)=>{
 res.json(users)
 }) 
 
-router.get("/user/:id",(req,res)=>{ 
+router.get("/:id",(req,res)=>{ 
 const {id}=req.params; 
 const user=users.find((u)=>u.id==id)
 res.json(user)
 }) 
 
-router.delete("/user/:id",(req,res)=>{ 
+router.delete("/:id",(req,res)=>{ 
 const {id}=req.params; 
 const user=users.filter((u)=>u.id!==id)
 res.json(user)
 }) 
 
-router.patch("/user/:id",(req,res)=>{ 
+router.patch("/:id",(req,res)=>{ 
     const{name,Email}=req.body;
 const {id}=req.params; 
 const user=users.find((u)=>u.id==id)
@@ -54,7 +54,7 @@ if(Email){user.Email=Email}
 
 res.json(user)
 }) 
-router.put("/user/:id",(req,res)=>{ 
+router.put("/:id",(req,res)=>{ 
     const{name,Email}=req.body;
 const {id}=req.params; 
 const user=users.find((u)=>u.id==id)

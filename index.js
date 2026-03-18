@@ -3,8 +3,10 @@
 import dotenv from "dotenv" 
 dotenv.config()
 const app=express();
-app.use(express.json()) // 
-app.use("/",usersRouter)
+app.use(express.json()) 
+// when endpoint /user go to users router
+
+app.use("/user",usersRouter) 
 
 
 
