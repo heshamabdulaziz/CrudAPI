@@ -1,19 +1,20 @@
 
 import express from "express"
+import { addNewUser, deleteUser, getAllUsers, getUser, updateUser, updatPartInUser} from "../controllers/usersController.js";
 const router=express.Router();
 
 
 // this users rout 
  //router.get(routes,(req,res)=>{  }= bussnass logic or controller)
 
-router.get("/",) 
+router.get("/",getAllUsers) 
 
-router.post("/Add",) 
+router.post("/Add",addNewUser) 
 
-router.get("/:id",) 
+router.get("/:id",getUser) 
 
-router.delete("/:id",) 
+router.delete("/:id",deleteUser) 
 
-router.patch("/:id",) 
-router.put("/:id",) 
+router.patch("/:id",updatPartInUser) 
+router.put("/:id",updateUser) 
 export default router;
